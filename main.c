@@ -1,5 +1,6 @@
 // Mateus Scandiuzzi Valente Tomomitsu RM 561565
 //Thomas Joh Kobayashi RM562758
+// Henrique Mandrick RM562715
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -51,6 +52,35 @@ void factorial(void) {
     }
 
     return;
+}
+
+void    palindromo(void)
+{
+    char palavra[101];
+    int tamanho = 0;
+    int eh_palindromo = 1;
+
+    printf("Digite a palavra: ");
+    scanf(" %100s", palavra);
+    while (fgetc(stdin) != '\n');
+
+
+    while (palavra[tamanho] != '\0') {
+        tamanho++;
+    }
+
+    for (int i = 0; i < tamanho / 2; i++) {
+        if (palavra[i] != palavra[tamanho - i - 1]) {
+            eh_palindromo = 0;
+            break;
+        }
+    }
+
+    if (eh_palindromo) {
+        printf("A palavra é um palíndromo.\n");
+    } else {
+        printf("A palavra NÃO é um palíndromo.\n");
+    }
 }
 
 void    check_substring(void)
@@ -117,6 +147,7 @@ int main()
                 factorial();
                 break;
             case '3':
+                palindromo();
                 break;
             case '4':
                 check_substring();
