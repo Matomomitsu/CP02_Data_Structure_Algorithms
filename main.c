@@ -1,7 +1,7 @@
-// Mateus Scandiuzzi Valente Tomomitsu RM 561565
-//Thomas Joh Kobayashi RM562758
+// Mateus Scandiuzzi Valente Tomomitsu RM561565
+// Thomas Joh Kobayashi RM562758
 // Henrique Mandrick RM562715
-// Luiz Henrique Zaim da Cruz RM 563615
+// Luiz Henrique Zaim da Cruz RM563615
 #include <stdio.h>
 #include <stdbool.h>
 #include <locale.h>
@@ -9,7 +9,34 @@
 #include <stdio.h>
 
 
-void fibonacci(int n) {
+char    get_number(void)
+{
+    char input[3];
+
+    printf("Digite a sua escolha: \t");
+    fgets(input, 3, stdin);
+
+    if (input[1] != '\n' && input[1] != '\0')
+    {
+        printf("Entrada inválida\n");
+        while(fgetc(stdin) != '\n');
+        return('\0');
+    }
+    return (input[0]);
+}
+
+void fibonacci(void) {
+    int n;
+
+    printf("Digite a quantidade de termos da sequência de Fibonacci (1 a 50): ");
+    scanf("%d", &n);
+    while (fgetc(stdin) != '\n');
+
+    if (n < 1 || n > 50) {
+        printf("Número de termos inválido. Deve estar entre 1 e 50.\n");
+        return;
+    }
+
     // Declarando um vetor de inteiros para armazenar a sequência de Fibonacci
     int fib_sequence[n];
 
@@ -34,41 +61,6 @@ void fibonacci(int n) {
         printf("%d ", fib_sequence[i]);
     }
     printf("\n");  // Pula para a próxima linha após a sequência
-}
-
-int main() {
-    int n;
-    
-    // Solicita ao usuário a quantidade de termos da sequência de Fibonacci
-    printf("Digite a quantidade de termos da sequência de Fibonacci (1 a 50): ");
-    scanf("%d", &n);
-    
-    // Verifica se o número inserido está dentro do intervalo permitido
-    if (n < 1 || n > 50) {
-        printf("Número de termos inválido. Deve estar entre 1 e 50.\n");
-        return 1;  // Encerra o programa caso o número não seja válido
-    }
-
-    // Chama a função fibonacci passando o número de termos solicitado
-    fibonacci(n);
-
-    return 0;  // Finaliza o programa com sucesso
-}
-
-char    get_number(void)
-{
-    char input[3];
-
-    printf("Digite a sua escolha: \t");
-    fgets(input, 3, stdin);
-
-    if (input[1] != '\n' && input[1] != '\0')
-    {
-        printf("Entrada inválida\n");
-        while(fgetc(stdin) != '\n');
-        return('\0');
-    }
-    return (input[0]);
 }
 
 void factorial(void) {
@@ -190,6 +182,7 @@ int main()
         switch(number)
         {
             case '1':
+                fibonacci();
                 break;
             case '2':
                 factorial();
