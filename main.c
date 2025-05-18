@@ -1,11 +1,59 @@
 // Mateus Scandiuzzi Valente Tomomitsu RM 561565
 //Thomas Joh Kobayashi RM562758
 // Henrique Mandrick RM562715
-
+// Luiz Henrique Zaim da Cruz RM 563615
 #include <stdio.h>
 #include <stdbool.h>
 #include <locale.h>
 #include <string.h>
+#include <stdio.h>
+
+
+void fibonacci(int n) {
+    // Declarando um vetor de inteiros para armazenar a sequência de Fibonacci
+    int fib_sequence[n];
+
+    // Inicializando os dois primeiros números da sequência de Fibonacci
+    if (n >= 1) {
+        fib_sequence[0] = 0;  // O primeiro número da sequência é 0
+    }
+    if (n >= 2) {
+        fib_sequence[1] = 1;  // O segundo número da sequência é 1
+    }
+
+    // Preenchendo o vetor com os números seguintes da sequência de Fibonacci
+    for (int i = 2; i < n; i++) {
+        // Cada número é a soma dos dois anteriores
+        fib_sequence[i] = fib_sequence[i - 1] + fib_sequence[i - 2];
+    }
+
+    // Imprimindo a sequência de Fibonacci
+    printf("Sequência de Fibonacci: ");
+    for (int i = 0; i < n; i++) {
+        // Imprime cada número da sequência
+        printf("%d ", fib_sequence[i]);
+    }
+    printf("\n");  // Pula para a próxima linha após a sequência
+}
+
+int main() {
+    int n;
+    
+    // Solicita ao usuário a quantidade de termos da sequência de Fibonacci
+    printf("Digite a quantidade de termos da sequência de Fibonacci (1 a 50): ");
+    scanf("%d", &n);
+    
+    // Verifica se o número inserido está dentro do intervalo permitido
+    if (n < 1 || n > 50) {
+        printf("Número de termos inválido. Deve estar entre 1 e 50.\n");
+        return 1;  // Encerra o programa caso o número não seja válido
+    }
+
+    // Chama a função fibonacci passando o número de termos solicitado
+    fibonacci(n);
+
+    return 0;  // Finaliza o programa com sucesso
+}
 
 char    get_number(void)
 {
